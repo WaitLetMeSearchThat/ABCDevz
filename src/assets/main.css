@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* * --- THEME DEFINITIONS ---
+     * Define the color palettes for the body and core components 
+     * using CSS variables for runtime switching.
+     * The main gradient for the page background is set here.
+     */
+  .light-theme {
+        background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+        --tw-gradient-from: #bbbbbb; /* gray-300 */
+        --tw-gradient-via: #ffffff;  /* WHITE (New Via) */
+        --tw-gradient-to: #00031c;   /* gray-400 */
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+    }
+     .light-theme .plain{background-color:#e0dede;}
+    /* Theme overrides for standard utility classes */
+    .light-theme .text-gray-600 { color: #4b5563; }
+     .light-theme .nem { color: #00518b; }
+    .light-theme .text-gray-700 { color: #374151; }
+  .light-theme .bg-white {
+        background-image: linear-gradient(to bottom right, rgb(150, 148, 148), #f8f8f8, #777777); }
+   .light-theme .side {
+     background-color: #001c1c;
+    color: #0a0a0a; }
+    /* Inner element gradient */
+    .light-theme .timeline-box{
+   
+        background-image: linear-gradient(to bottom right, #908f8f, #dad9d9, #cac8c8); }
+ .light-theme .rev {
+        background-image: linear-gradient(to bottom right, #898989, #ffffff, #8e8e8e); }
+
+
+    /* 2. DARK GRADIENT - via: slate-950 */
+    .dark-theme {
+        background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+        --tw-gradient-from: rgb(13, 15, 22); /* slate-900 */
+        --tw-gradient-via: #3b436b;  /* SLATE-950 (New Via) */
+        --tw-gradient-to: #002561;   /* slate-800 */
+        --tw-gradient-stops: var(--tA-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+        color: #e2e8f0; 
+    } .dark-theme .text {color:floralwhite;}
+    .dark-theme{ color: #e2e2e2; }
+      .dark-theme .plain{background-color:#040405;}
+    /* Theme overrides for standard utility classes */
+    .dark-theme .text-gray-600 { color: #ffffff; }
+    .dark-theme .nem { color: hsl(206, 100%, 93%); }
+        .dark-theme .h1 { color: hsl(0, 0%, 95%); }
+ .dark-theme .bg-white{  background-image: linear-gradient(to bottom right, #080f22, #1e1f2e, #061027);}
+    .dark-theme .bg-gray-50 { background-color: #07152c; }
+    .dark-theme .border-gray-400 { border-color: #0b1729; }
+    /* Inner element gradient and custom shadows */
+    .dark-theme .timeline-box {  background-image: linear-gradient(to bottom right, #06060b, #141c2e, #071025);}
+    .dark-theme .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); }
+    .dark-theme .left-timeline{ background-image: linear-gradient(to bottom right, #1e293b, #0f172a); }
+  .dark-theme .rev{  background-image: linear-gradient(to bottom right, #03030f, #262d3d, #0b1429);}
+       .dark-theme .h1 { color: #fafafa; }
+    /* 3. GREEN GRADIENT - via: teal-700 */
+    .green-theme {
+        background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+        --tw-gradient-from: #064e3b; /* emerald-900 */
+        --tw-gradient-via: #0f766e;  /* TEAL-700 (New Via) */
+        --tw-gradient-to: #052e16;   /* emerald-950 */
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+        color: #d1fae5; 
+    }
+    
+     .green-theme .plain{ background-color: hsl(165, 85%, 31%); }
+     .green-theme .h1{ color: #ffffff; }
+    /* Theme overrides for standard utility classes */
+    .green-theme .text-gray-600 { color: #afecd8; }
+    .green-theme .nem{ color: #00fcb9; text-shadow: white; }
+    /* <<<--- UPDATED HERE --->>> */
+  .green-theme .bg-white { background-image: linear-gradient(to bottom right, #015c54, #013b2b); }
+    .green-theme .bg-gray-50 { background-color: #038857; }
+    .green-theme .border-gray-400 { border-color: #018655; }
+    /* Inner element gradient and custom shadows */
+    .green-theme .timeline-box { background-image: linear-gradient(to bottom right, #0d9488, #065f46); }
+    .green-theme .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); }
+    .green-theme .text-green-700 { color: #f0fdf4; } 
+    .green-theme .text-green-800 { color: #166534; } 
+     .green-theme .rev {background-image: linear-gradient(to bottom right, #015c54, #0d9488, #006347); }
+  
+    /* 4. PURPLE GRADIENT - via: violet-700 */
+    .purple-theme {
+        --tw-gradient-from: #e2dcec; /* violet-900 */
+        --tw-gradient-via: #c8b0ee;  /* VIOLET-700 (New Via) */
+        --tw-gradient-to: #cea7df;   /* custom deep purple */
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-via), var(--tw-gradient-to);
+        color: #f3e8ff; 
+    }
+     .purple-theme .h1{ color: #e2e2e2; }
+  
+    /* Theme overrides for standard utility classes */
+    .purple-theme .text-gray-600 { color: #afecd8; }
+    .purple-theme .nem{ color: #ff008c; }
+    /* <<<--- UPDATED HERE --->>> */
+  .purple-theme .bg-white { background-image: linear-gradient(to bottom right, #38037e, #38037e); }
+    .purple-theme .bg-gray-50 { background-color: #38037e; }
+    .purple-theme .border-gray-400 { border-color: #38037e; }
+    /* Inner element gradient and custom shadows */
+    .purple-theme .timeline-box { background-image: linear-gradient(to bottom right, #3e1573, #45025a, #38037e);}
+    .purple-theme .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); }
+    .purple-theme .text-green-700 { color: #f0fdf4; } 
+    .purple-theme .text-green-800 { color: #166534; } 
+     .purple-theme .rev {background-image: linear-gradient(to bottom right, #24054c, #61037d, #4804a1); }
+ .purple-theme .plain {background-color:#950184;}
+    .name { margin-top: -30px; position: absolute; }
+    .wrap .border { left: 50%; }
+    .border-2 { border-right-width: 3px; }
+    .right-timeline .spacer { display: none; }
+}
+
+@layer utilities {
+    /* * IMPORTANT: Place custom structural classes and media queries here 
+     * to prevent Tailwind JIT from purging them.
+     */
+    
+    /* 1. Base Mobile-first overrides (for left/right alignment) */
+    @media (max-width: 767px) {
+        .wrap .border { left: 20px; }
+        
+        /* Forces the left-side items to display right-to-left on mobile */
+        .left-timeline { 
+            flex-direction: row !important; 
+            padding-left: 40px; 
+        }
+        
+        /* Applies common mobile padding */
+        .right-timeline, .left-timeline { 
+            padding-left: 40px; 
+        }
+        
+        /* Positions the dot */
+        .dot { 
+            margin-left: -28px; 
+        }
+        
+        /* Ensures cards take full width */
+        .card-width { 
+            width: 100% !important; 
+        }
+        
+        /* Shows the spacer for right-aligned items on mobile */
+        .right-timeline .spacer { 
+            display: block; 
+            width: 0; 
+        }
+    }
+}
