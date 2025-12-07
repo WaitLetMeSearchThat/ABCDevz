@@ -6,9 +6,9 @@
       v-model="selectedTheme"
       @change="setTheme(selectedTheme)"
     >
-      <option class="h1" value="light">☀️ Light  (Default)</option>
-      <option class="h1" value="dark">🌙 Dark </option>
-      <option class="h1" value="green">🟢 Green </option>
+      <option class="h1  hover:rev" value="light">☀️ Light  (Default)</option>
+      <option class="h1  hover:rev" value="dark">🌙 Dark </option>
+      <option class="h1  hover:rev" value="green">🟢 Green </option>
     </select>
   </div>
 </template>
@@ -16,7 +16,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const THEMES = ['light', 'dark', 'green', 'purple'];
+const THEMES = ['light', 'dark', 'green'];
 const selectedTheme = ref('light'); // Default state
 
 /**

@@ -1,37 +1,78 @@
 <script setup>
+import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 import ThemeSelector from '@/Components/ThemeSelector.vue';
-// Note: In a real project, '@/Components/ThemeSelector.vue' should be the correct path
-// relative to your Header component. I'm keeping the path you provided.
+
+// Define your primary routes/navigation links
+// 'to' should match the 'path' defined in your router configuration (router/index.js)
+const navLinks = ref([
+    { name: 'Home', to: '/' },
+    { name: 'Components', to: '/dashboard' },
+    { name: 'Tools', to: '/tools' },
+]);
+
+// Simple state for a mobile responsive menu
+const isMenuOpen = ref(false);
+
+function toggleMenu() {
+    isMenuOpen.value = !isMenuOpen.value;
+}
+
+function closeMenu() {
+    isMenuOpen.value = false;
+}
 </script>
 
-
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-   
-    <nav class="flex items-center space-x-4 sm:space-x-6 text-base h-full">
-      
-      <router-link 
-        to="/" 
-        class="nav-base"
-        active-class="nav-active"
-      >
-   
-      </router-link>
-      
+    <header class="backdrop-blur shadow-md sticky top-0 z-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <RouterLink to="/" class="text-2xl font-bold nem hover:h1  transition duration-150">
+          Future Programmers
+                    </RouterLink>
+                </div>
 
-    </nav>
-        <ThemeSelector />
-  </div>
+                <nav class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <RouterLink
+                        v-for="link in navLinks"
+                        :key="link.name"
+                        :to="link.to"
+                        class="px-3 py-2 plain rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600 transition duration-150"
+                        active-class="bg-indigo-50 text-indigo-700"
+                    >
+                        {{ link.name }}
+                    </RouterLink>
+                </nav>
+
+                <div class="sm:hidden">
+                    <button @click="toggleMenu" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg v-if="!isMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg v-else class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <ThemeSelector />
+            </div>
+        </div>
+
+        <div v-if="isMenuOpen" class="sm:hidden border-t border-gray-100 pb-2 pt-4">
+            <div class="space-y-1 px-2">
+                <RouterLink
+                    v-for="link in navLinks"
+                    :key="link.name"
+                    :to="link.to"
+                    @click="closeMenu"
+                    class="block px-3 py-2 rev rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition duration-150"
+                    active-class="bg-indigo-100 text-indigo-800"
+                >
+                    {{ link.name }}
+                </RouterLink>
+            </div>
+        </div>
+    </header>
 </template>
-
-<style scoped>
-/* Base class for navigation links */
-.nav-base {
-    /* Using simple Tailwind classes here instead of complex custom @apply directives */
-    @apply transition duration-150 font-medium py-2 px-3 rounded-lg text-gray-600 hover:bg-indigo-50 hover:text-indigo-700;
-}
-/* Active class for the current route */
-.nav-active {
-    @apply text-indigo-700 bg-indigo-100 shadow-sm font-semibold;
-}
-</style>
